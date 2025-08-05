@@ -4,101 +4,101 @@
   participants:
     - name: michikusamichiya
       score: 24000
-      color: '#8B4513'
+      color: 茶
     - name: Sunshine28aki
       score: 7000
-      color: 'black'
+      color: 灰
     - name: yuki_mateki
       score: 7000
-      color: 'black'
+      color: 緑
     - name: Nykci
       score: 8000
-      color: 'black'
+      color: 茶
     - name: bigigura
       score: 6800
-      color: 'black'
+      color: 灰
 - rank_info: "19th"
   school_name: "安曇野市立穂高東中学校"
   total_score: 52500
   participants:
     - name: hidehico
       score: 52500
-      color: 'green'
+      color: 緑
 - rank_info: "20th"
   school_name: "渋谷教育学園渋谷中学校"
   total_score: 45800
   participants:
     - name: toxireh
       score: 45800
-      color: '#A52A2A'
+      color: 茶
 - rank_info: "21st"
   school_name: "東京都立武蔵高等学校附属中学校"
   total_score: 44700
   participants:
     - name: Fruit_sugar
       score: 25000
-      color: '#A52A2A'
+      color: 灰
     - name: 3110kounotori
       score: 7000
-      color: 'black'
+      color: 緑
     - name: applefrisk
       score: 6700
-      color: 'black'
+      color: 茶
     - name: spbob8y
       score: 6000
-      color: 'black'
+      color: 灰
 - rank_info: "22nd"
   school_name: "仙台市立仙台青陵中等教育学校"
   total_score: 42900
   participants:
     - name: nowf41
       score: 42900
-      color: '#A52A2A'
+      color: 緑
 - rank_info: "23rd"
   school_name: "筑波大学附属中学校"
   total_score: 38000
   participants:
     - name: yuubinnkyoku
       score: 20000
-      color: '#A52A2A'
+      color: 茶
     - name: Meis_Meiko
       score: 7000
-      color: 'black'
+      color: 灰
     - name: lemonydrink
       score: 6000
-      color: 'black'
+      color: 緑
 - rank_info: "24th"
   school_name: "高松市立協和中学校"
   total_score: 30900
   participants:
     - name: friedrice0
       score: 30900
-      color: '#A52A2A'
+      color: 茶
 - rank_info: "25th"
   school_name: "江東区立第二大島中学校"
   total_score: 30700
   participants:
     - name: Kosei0506
       score: 30700
-      color: '#A52A2A'
+      color: 灰
 - rank_info: "26th"
   school_name: "海城中学校"
   total_score: 26900
   participants:
     - name: masa0118
       score: 26900
-      color: '#A52A2A'
+      color: 緑
 - rank_info: "27th"
   school_name: "町田市立つくし野中学校"
   total_score: 26100
   participants:
     - name: jaae
       score: 26100
-      color: '#A52A2A'
+      color: 茶
 - rank_info: "28th"
   school_name: "三豊市立高瀬中学校"
   total_score: 25200
   participants:
     - name: tyokousagi
       score: 25200
-      color: '#A52A2A'
+      color: 灰

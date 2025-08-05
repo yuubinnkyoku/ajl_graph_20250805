@@ -5,6 +5,23 @@ import numpy as np
 import yaml # YAMLを扱うためのライブラリをインポート
 import textwrap
 
+
+def to_matplotlib_color(c1: str) -> str:
+    """
+    1文字色コード(灰/茶/緑/水/青/黄/橙/赤)を matplotlib の色名/HEX にマッピング。
+    """
+    mapping = {
+        "灰": "#808080",  # gray
+        "茶": "#804000",  # brown-like
+        "緑": "#008000",  # green
+        "水": "#00C0C0",  # cyan-like
+        "青": "#0000FF",  # blue
+        "黄": "#C0C000",  # yellow-like
+        "橙": "#FF8000",  # orange
+        "赤": "#FF0000",  # red
+    }
+    return mapping.get(c1, "#000000")
+
 # --- データの読み込み ---
 # YAMLファイルを開き、内容を読み込む
 # encoding='utf-8' を指定することで、日本語が正しく読み込まれる
@@ -29,6 +46,18 @@ plt.rcParams['axes.unicode_minus'] = False
 fig, ax = plt.subplots(figsize=(14, 8))
 
 # データを抽出
+
+# participants の color は YAML 側で「灰/茶/緑/水/青/黄/橙/赤」の1文字が与えられる前提。
+# 描画用に matplotlib の HEX へ変換した値を一時キー mpl_color に積む。
+for d in chart_data:
+    participants = d.get('participants') or []
+    for p in participants:
+        c = p.get('color', '')
+        if isinstance(c, str) and len(c) == 1 and c in "灰茶緑水青黄橙赤":
+            p['mpl_color'] = to_matplotlib_color(c)
+        else:
+            # 不正・欠損時は黒でフォールバック
+            p['mpl_color'] = "#000000"
 
 labels = [create_label(d) for d in chart_data]
 total_scores = [d['total_score'] for d in chart_data]
@@ -59,7 +88,7 @@ for i, data in enumerate(chart_data):
 
         font_size = 0.25 * np.sqrt(score / name_len)
 
-        # 参加者名を表示
+        # 参加者名を表示（matplotlib 用の色を使用）
         ax.text(
             i,
             bottom + score / 2,
@@ -68,7 +97,7 @@ for i, data in enumerate(chart_data):
             va='center',
             rotation=90,
             fontsize=font_size,
-            color=participant['color'],
+            color=participant.get('mpl_color', '#000000'),
             fontweight='bold'
         )
         
