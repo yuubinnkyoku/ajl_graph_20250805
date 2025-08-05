@@ -1,5 +1,5 @@
 - rank_info: "18th"
-  school_name: "岡山県立倉敷\n天城中学校"
+  school_name: "岡山県立倉敷天城中学校"
   total_score: 52800
   participants:
     - name: michikusamichiya
@@ -18,21 +18,21 @@
       score: 6800
       color: 'black'
 - rank_info: "19th"
-  school_name: "安曇野市立穂高\n東中学校"
+  school_name: "安曇野市立穂高東中学校"
   total_score: 52500
   participants:
     - name: hidehico
       score: 52500
       color: 'green'
 - rank_info: "20th"
-  school_name: "渋谷教育学園\n渋谷中学校"
+  school_name: "渋谷教育学園渋谷中学校"
   total_score: 45800
   participants:
     - name: toxireh
       score: 45800
       color: '#A52A2A'
 - rank_info: "21st"
-  school_name: "東京都立武蔵高等学校\n附属中学校"
+  school_name: "東京都立武蔵高等学校附属中学校"
   total_score: 44700
   participants:
     - name: Fruit_sugar
@@ -48,7 +48,7 @@
       score: 6000
       color: 'black'
 - rank_info: "22nd"
-  school_name: "仙台市立仙台青陵\n中等教育学校"
+  school_name: "仙台市立仙台青陵中等教育学校"
   total_score: 42900
   participants:
     - name: nowf41
@@ -75,7 +75,7 @@
       score: 30900
       color: '#A52A2A'
 - rank_info: "25th"
-  school_name: "江東区立第二\n大島中学校"
+  school_name: "江東区立第二大島中学校"
   total_score: 30700
   participants:
     - name: Kosei0506
