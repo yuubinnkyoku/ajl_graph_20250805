@@ -33,7 +33,7 @@ with open('data.yaml', 'r', encoding='utf-8') as file:
 def create_label(d):
     # 参加者が複数いる場合は、rank_infoの下に人数を表示
     num_participants = len(d.get('participants', []))
-    n_label = f"\nn={num_participants}" if num_participants > 1 else "" 
+    n_label = f"\nn={num_participants}" if num_participants >= 1 else ""
     # 学校名を10文字で改行
     school_name = textwrap.fill(d['school_name'], width=6)
     return f"{d['rank_info']}{n_label}\n{school_name}"
