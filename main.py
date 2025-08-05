@@ -11,6 +11,13 @@ with open('data.yaml', 'r', encoding='utf-8') as file:
     chart_data = yaml.safe_load(file)
 # ----------------------
 
+# X軸のラベルを生成する関数
+def create_label(d):
+    # 参加者が複数いる場合は、rank_infoの下に人数を表示
+    num_participants = len(d.get('participants', []))
+    n_label = f"\nn={num_participants}" if num_participants > 1 else "" 
+    return f"{d['rank_info']}{n_label}\n{d['school_name']}"
+
 # 日本語フォントの設定（ご使用の環境に合わせてフォント名を変更してください）
 plt.rcParams['font.sans-serif'] = ['Yu Gothic', 'Meiryo', 'TakaoGothic', 'sans-serif']
 plt.rcParams['axes.unicode_minus'] = False
@@ -19,7 +26,8 @@ plt.rcParams['axes.unicode_minus'] = False
 fig, ax = plt.subplots(figsize=(14, 8))
 
 # データを抽出
-labels = [f"{d['rank_info']}\n{d['school_name']}" for d in chart_data]
+
+labels = [create_label(d) for d in chart_data]
 total_scores = [d['total_score'] for d in chart_data]
 bar_indices = np.arange(len(chart_data))
 
@@ -48,8 +56,11 @@ for i, data in enumerate(chart_data):
         if name_len == 0:
             name_len = 1
 
-        # score / name_len の平方根に比例させることで、急激なサイズ変化を抑制
-        font_size = 0.3 * np.sqrt(score / name_len)
+        # 参加人数に応じてフォントサイズを滑らかに調整
+        # 参加人数の平方根に反比例させる
+        font_scale_factor = 0.4 / np.sqrt(num_participants)
+
+        font_size = font_scale_factor * np.sqrt(score / name_len)
 
         # 参加者名を表示
         ax.text(
@@ -77,9 +88,9 @@ for i, data in enumerate(chart_data):
                 linewidth=1.2
             )
 
-# 各バーの上に合計スコアを表示
-for i, score in enumerate(total_scores):
-    ax.text(i, score + 1000, f'{score/1000:.1f}K', ha='center', va='bottom', fontsize=14, fontweight='bold')
+    # 各バーの上に合計スコアを表示
+    total_score = data['total_score']
+    ax.text(i, total_score + 1000, f'{total_score/1000:.1f}K', ha='center', va='bottom', fontsize=14, fontweight='bold')
 
 # Y軸のフォーマットを 'K' 形式にする
 def kilo_formatter(x, pos):
