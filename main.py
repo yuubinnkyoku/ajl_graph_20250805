@@ -3,6 +3,7 @@ import matplotlib.font_manager as fm
 from matplotlib.ticker import FuncFormatter
 import numpy as np
 import yaml # YAMLを扱うためのライブラリをインポート
+import textwrap
 
 # --- データの読み込み ---
 # YAMLファイルを開き、内容を読み込む
@@ -16,7 +17,9 @@ def create_label(d):
     # 参加者が複数いる場合は、rank_infoの下に人数を表示
     num_participants = len(d.get('participants', []))
     n_label = f"\nn={num_participants}" if num_participants > 1 else "" 
-    return f"{d['rank_info']}{n_label}\n{d['school_name']}"
+    # 学校名を10文字で改行
+    school_name = textwrap.fill(d['school_name'], width=6)
+    return f"{d['rank_info']}{n_label}\n{school_name}"
 
 # 日本語フォントの設定（ご使用の環境に合わせてフォント名を変更してください）
 plt.rcParams['font.sans-serif'] = ['Yu Gothic', 'Meiryo', 'TakaoGothic', 'sans-serif']
@@ -53,14 +56,8 @@ for i, data in enumerate(chart_data):
         # スコアと名前の長さに応じてフォントサイズを動的に調整
         # 描画面積に比例するような計算式に変更
         name_len = len(name)
-        if name_len == 0:
-            name_len = 1
 
-        # 参加人数に応じてフォントサイズを滑らかに調整
-        # 参加人数の平方根に反比例させる
-        font_scale_factor = 0.4 / np.sqrt(num_participants)
-
-        font_size = font_scale_factor * np.sqrt(score / name_len)
+        font_size = 0.25 * np.sqrt(score / name_len)
 
         # 参加者名を表示
         ax.text(
